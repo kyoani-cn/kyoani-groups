@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提交群信息 - 京阿尼同好会地图</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="submit-container">
+        <h1>如何提交群信息</h1>
+        
+        <div class="submit-content">
+            <h2>通过GitHub提交</h2>
+            <ol>
+                <li>访问项目的GitHub仓库</li>
+                <li>找到 groups.json 文件</li>
+                <li>点击编辑按钮（铅笔图标）</li>
+                <li>按照现有格式添加您的群组信息</li>
+                <li>提交Pull Request等待审核</li>
+            </ol>
+
+            <h2>通过维护人提交</h2>
+            <p>如果您不熟悉GitHub操作，可以通过以下方式联系维护人：</p>
+            <ul>
+                <li>QQ：<span id="maintainer-qq"></span></li>
+                <li>邮箱：<span id="maintainer-email"></span></li>
+            </ul>
+
+            <h2>信息格式说明</h2>
+            <pre class="code-example">
+{
+    "name": "群组名称",
+    "number": "群号",
+    "region": "地区（国家/省份/都道府县）",
+    "city": "城市",
+    "contact": "负责人QQ"
+}</pre>
+        </div>
+
+        <div class="navigation-links">
+            <a href="index.html">返回地图</a>
+            <a href="table.html">查看表格</a>
+        </div>
+    </div>
+
+    <script>
+        // 更新维护人信息
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('maintainer-qq').textContent = '维护人QQ号';
+            document.getElementById('maintainer-email').textContent = 'email@example.com';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全国京阿尼同好会地图！</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>全国京阿尼同好会地图！</h1>
+        </header>
+        <div class="content">
+            <div class="qr-code-section">
+                <h2>维护群二维码</h2>
+                <div id="qr-code-placeholder"></div>
+            </div>
+        </div>
+        <div id="map"></div>
+        <footer>
+            <div class="navigation">
+                <a href="table.html">查看表格</a>
+                <a href="submit.html">提交群信息</a>
+            </div>
+            <div class="footer">
+                <p>本站仅为京阿尼爱好者提供交流平台信息</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

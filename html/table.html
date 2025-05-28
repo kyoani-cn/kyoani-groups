@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京阿尼同好会列表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" class="table-container">
+        <h1>京阿尼同好会列表</h1>
+        
+        <div class="filters">
+            <input v-model="search" placeholder="搜索..." class="search-input">
+            <select v-model="regionFilter" class="filter-select">
+                <option value="">所有地区</option>
+                <option v-for="region in regions" :key="region" :value="region">{{ region }}</option>
+            </select>
+        </div>
+
+        <table class="groups-table">
+            <thead>
+                <tr>
+                    <th @click="sort('name')">群名称 <span v-if="sortKey === 'name'">{{ sortOrder === 1 ? '↓' : '↑' }}</span></th>
+                    <th @click="sort('number')">群号 <span v-if="sortKey === 'number'">{{ sortOrder === 1 ? '↓' : '↑' }}</span></th>
+                    <th @click="sort('region')">地区 <span v-if="sortKey === 'region'">{{ sortOrder === 1 ? '↓' : '↑' }}</span></th>
+                    <th @click="sort('city')">城市 <span v-if="sortKey === 'city'">{{ sortOrder === 1 ? '↓' : '↑' }}</span></th>
+                    <th>负责人QQ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="group in filteredGroups" :key="group.number">
+                    <td>{{ group.name }}</td>
+                    <td>{{ group.number }}</td>
+                    <td>{{ group.region }}</td>
+                    <td>{{ group.city }}</td>
+                    <td>{{ group.contact }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="navigation-links">
+            <a href="index.html">返回地图</a>
+            <a href="submit.html">提交群信息</a>
+        </div>
+    </div>
+
+    <script src="js/table.js"></script>
+</body>
+</html>
