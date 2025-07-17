@@ -118,6 +118,27 @@ const initMap = async ()=> {
         maxZoom: 6,                // 最大缩放级别
     });
     
+    // 添加地图导航控件（已注释）
+    // map.addControl(new maplibregl.NavigationControl());
+    
+    /**
+     * 设置地图视野到中国边界范围
+     * 使用防抖函数避免频繁调用
+     */
+    const setChinaBounds = () => {
+        // 使用防抖延迟执行，避免频繁触发
+        lazy('setChinaBounds',()=>{
+            map.fitBounds(chinaBounds, {
+                padding: 10,    // 边界内边距
+                duration: 1000   // 动画持续时间（毫秒）
+            })
+        },300);  // 延迟300毫秒执行
+    };
+    
+    // 地图加载完成后的事件处理
+    map.on('load', async () => {
+
+
     // 异步加载中国地理数据
     const chinaGeojsonFetch = await fetch('data/china.geojson');
     const chinaGeojson = await chinaGeojsonFetch.json();
@@ -166,25 +187,8 @@ const initMap = async ()=> {
     map.getSource('china-province-label').setData(chinaGeojsonFeaturesCenterGeoJson);
 
 
-    // 添加地图导航控件（已注释）
-    // map.addControl(new maplibregl.NavigationControl());
+
     
-    /**
-     * 设置地图视野到中国边界范围
-     * 使用防抖函数避免频繁调用
-     */
-    const setChinaBounds = () => {
-        // 使用防抖延迟执行，避免频繁触发
-        lazy('setChinaBounds',()=>{
-            map.fitBounds(chinaBounds, {
-                padding: 10,    // 边界内边距
-                duration: 1000   // 动画持续时间（毫秒）
-            })
-        },300);  // 延迟300毫秒执行
-    };
-    
-    // 地图加载完成后的事件处理
-    map.on('load', async () => {
         try {
             // 加载并添加群组标记到地图
             await loadAndAddGroups(map,chinaGeojson);

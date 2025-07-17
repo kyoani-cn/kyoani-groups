@@ -1,6 +1,9 @@
 
 const quote = '"';
-const comma = ',';
+const comma = [
+	',',
+	'\t', // 也支持制表符
+];
 const newline = [
 	'\n',
 	'\r',
@@ -52,7 +55,7 @@ const csvParse = (text,KeyMap={})=>{
 			continue;
 		}
 		
-		if(char === comma){ // 如果是逗号
+		if(comma.includes(char)){ // 如果是逗号
 
 			line.push(clearValue(value));
 			value = '';
