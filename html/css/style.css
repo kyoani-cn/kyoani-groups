@@ -124,6 +124,22 @@ footer {
   bottom: 0;
   left: 0;
 }
+.qr-code {
+  pointer-events: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 6px;
+}
+.qr-code img {
+  display: block;
+  width: 160px;
+  padding-bottom: 6px;
+}
+.qr-code .cp {
+  font-size: 12px;
+  opacity: 0.5;
+}
 .marker-region-box {
   background: #FFF;
   border-radius: 4px;
@@ -156,17 +172,20 @@ footer {
   background: #E4521D;
   color: #FFF;
   padding: 4px 6px;
-  margin-right: 4px;
   border-radius: 2px;
   pointer-events: auto;
 }
 footer {
   padding: 4px 6px;
   pointer-events: none;
+  text-align: right;
+  position: fixed;
+  right: 0;
 }
 footer .navigation {
   display: flex;
   padding-bottom: 4px;
+  justify-content: flex-end;
 }
 footer .cp {
   font-size: 12px;
