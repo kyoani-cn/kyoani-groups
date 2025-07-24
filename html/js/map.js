@@ -243,7 +243,8 @@ const loadAndAddGroups = async (map, chinaGeojson) => {
             region,  // 所属省份/地区
             city,    // 所属城市
         } = group;
-        
+        if(!region ) continue;  // 如果没有省份信息，则跳过该群组
+         
         // 如果该省份还没有群组数组，则初始化
         if(!Regions[region]){
             Regions[region] = [];
@@ -272,6 +273,8 @@ const loadAndAddGroups = async (map, chinaGeojson) => {
         // 创建标记的 DOM 元素
         const el = document.createElement('div');
         el.className ='marker-region-box';  // 设置 CSS 类名
+
+        el.setAttribute('data-region', region);  // 设置自定义属性，存储省份名称
         
         // 设置标记的 HTML 内容
         el.innerHTML = `
